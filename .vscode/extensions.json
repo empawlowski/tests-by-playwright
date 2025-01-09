@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "pkief.material-icon-theme",
+    "ms-playwright.playwright",
+    "esbenp.prettier-vscode",
+    "mechatroner.rainbow-csv"
+  ]
+}
