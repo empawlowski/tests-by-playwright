@@ -14,17 +14,19 @@ test("RPG Challenge - input data from xlsx file", async ({ page }) => {
   await page.getByRole("button", { name: "Start" }).click();
 
   for (let index: number = 1; index < record.length; index++) {
-    await expect(
-      page.getByRole("button", { name: `Round ${index}` })
-    ).toBeVisible();
-    await page.getByTestId("labelFirstName").fill(record[index][0]);
-    await page.getByTestId("labelLastName").fill(record[index][1]);
-    await page.getByTestId("labelCompanyName").fill(record[index][2]);
-    await page.getByTestId("labelRole").fill(record[index][3]);
-    await page.getByTestId("labelAddress").fill(record[index][4]);
-    await page.getByTestId("labelEmail").fill(record[index][5]);
-    await page.getByTestId("labelPhone").fill(record[index][6].toString());
-    await page.getByRole("button", { name: "Submit" }).click();
+    await test.step(`Round ${index}`, async () => {
+      await expect(
+        page.getByRole("button", { name: `Round ${index}` })
+      ).toBeVisible();
+      await page.getByTestId("labelFirstName").fill(record[index][0]);
+      await page.getByTestId("labelLastName").fill(record[index][1]);
+      await page.getByTestId("labelCompanyName").fill(record[index][2]);
+      await page.getByTestId("labelRole").fill(record[index][3]);
+      await page.getByTestId("labelAddress").fill(record[index][4]);
+      await page.getByTestId("labelEmail").fill(record[index][5]);
+      await page.getByTestId("labelPhone").fill(record[index][6].toString());
+      await page.getByRole("button", { name: "Submit" }).click();
+    });
   }
 
   await expect(page.getByRole("button", { name: "Reset" })).toBeVisible();

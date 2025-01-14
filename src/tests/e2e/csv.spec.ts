@@ -18,18 +18,21 @@ test("RPG Challenge - input data from csv file", async ({ page }) => {
   await page.getByRole("button", { name: "Start" }).click();
 
   for (const record of records) {
-    await expect(
-      page.getByRole("button", { name: `Round ${index}` })
-    ).toBeVisible();
-    await page.getByTestId("labelFirstName").fill(record.FirstName);
-    await page.getByTestId("labelLastName").fill(record.LastName);
-    await page.getByTestId("labelCompanyName").fill(record.CompanyName);
-    await page.getByTestId("labelRole").fill(record.RoleInCompany);
-    await page.getByTestId("labelAddress").fill(record.Address);
-    await page.getByTestId("labelEmail").fill(record.Email);
-    await page.getByTestId("labelPhone").fill(record.PhoneNumber);
-    await page.getByRole("button", { name: "Submit" }).click();
-    index++;
+    await test.step(`Round ${index}`, async () => {
+      await expect(
+        page.getByRole("button", { name: `Round ${index}` })
+      ).toBeVisible();
+
+      await page.getByTestId("labelFirstName").fill(record.FirstName);
+      await page.getByTestId("labelLastName").fill(record.LastName);
+      await page.getByTestId("labelCompanyName").fill(record.CompanyName);
+      await page.getByTestId("labelRole").fill(record.RoleInCompany);
+      await page.getByTestId("labelAddress").fill(record.Address);
+      await page.getByTestId("labelEmail").fill(record.Email);
+      await page.getByTestId("labelPhone").fill(record.PhoneNumber);
+      await page.getByRole("button", { name: "Submit" }).click();
+      index++;
+    });
   }
 
   await expect(page.getByRole("button", { name: "Reset" })).toBeVisible();
