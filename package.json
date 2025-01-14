@@ -3,7 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "show-report": "npx playwright show-report src/output/test-reports"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
