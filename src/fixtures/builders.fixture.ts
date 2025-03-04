@@ -9,7 +9,6 @@ interface Builders {
 export const builders = buildersTest.extend<Builders>({
   mail: async ({}, use) => {
     const mailslurp = new MailSlurp({
-      // apiKey: process.env.MAILSLURP_API_KEY as string,
       apiKey: process.env.MAILSLURP_API_KEY || Configuration.mailSlurpApiKey,
     });
     await use(mailslurp);
