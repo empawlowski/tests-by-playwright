@@ -5,7 +5,7 @@ import * as path from "path";
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 export default defineConfig({
-  testDir: "./src/tests/e2e",
+  testDir: "./src/tests",
   outputDir: "./src/output/test-results",
   tsconfig: "./tsconfig.json",
   fullyParallel: true,
